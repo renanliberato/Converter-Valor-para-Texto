@@ -89,4 +89,86 @@ class BRL
     public $number;
     public $numberP;
 
+    /**
+     * Get the text of each number
+     *
+     * @param type $group
+     * @param type $groupPoint
+     * @return boolean
+     */
+    public function groupToWords($group, $groupPoint = 0)
+    {
+        $group = sprintf('%03d', $group);
+
+        $d1 = (int) $group{2};
+        $d2 = (int) $group{1};
+        $d3 = (int) $group{0};
+
+        $groupArray = array();
+        if (!$groupPoint) {
+            if ($d3 != 0){
+                if($d3 == 1) {
+                    //if the word needed is 'cem'
+                    if($d1 == 0 && $d2 == 0){
+                        $groupArray[] = $this->digitTH[$this->lang][2];
+                        //if the word needed is 'cento'
+                    }else {
+                        $groupArray[] = $this->digitTH[$this->lang][$d3];
+                    }
+                } else {
+                    $groupArray[] = $this->digitTH[$this->lang][$d3 + 1];
+                }
+            }
+
+            if ($d2 == 1 && $d1 != 0){ // 11-...-19
+                $groupArray[] = $this->digitTE[$this->lang][$d1];
+
+            }else if ($d2 != 0 && $d1 == 0){ // 1-...-9+0
+
+                $groupArray[] = $this->digitTW[$this->lang][$d2];
+
+            }else if ($d2 == 0 && $d1 == 0) {} // 00
+            else if ($d2 == 0 && $d1 != 0) { // 1-...-9
+
+                $groupArray[] = $this->digitON[$this->lang][$d1];
+
+            } else {
+
+                $groupArray[] = $this->digitTW[$this->lang][$d2];
+                $groupArray[] = $this->digitON[$this->lang][$d1];
+
+            }
+        } elseif ($groupPoint) {
+            if ($d3 != 0){
+                $groupArray[] = $this->digitTH[$this->lang][$d3];
+            }
+
+            if ($d2 == 1 && $d1 != 0){ // 11-19
+
+                $groupArray[] = $this->digitTE[$this->lang][$d1];
+
+            }else if ($d2 != 0 && $d1 == 0){ // 10-20-...-90
+
+                $groupArray[] = $this->digitTW[$this->lang][$d2];
+
+            }else if ($d2 == 0 && $d1 == 0) {} // 00
+            else if ($d2 == 0 && $d1 != 0) // 1-9
+
+                $groupArray[] = $this->digitON[$this->lang][$d1];
+
+            else { // Others
+
+                $groupArray[] = $this->digitTW[$this->lang][$d2];
+                $groupArray[] = $this->digitON[$this->lang][$d1];
+
+            }
+        }
+
+        if (!count($groupArray)){
+            return false;
+        }
+
+        return $groupArray;
+    }
+
 }
