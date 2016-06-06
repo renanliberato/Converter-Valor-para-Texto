@@ -1,5 +1,5 @@
 # Conversor Monetário para Extenso.
-
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/1bde6e52c1274d2d944e37b84f2cbf9f)](https://www.codacy.com/app/renan-libsantana/Converter-Valor-para-Texto?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=renanliberato/Converter-Valor-para-Texto&amp;utm_campaign=Badge_Grade)
 Converter valor para texto.
 
 ## Briefing
