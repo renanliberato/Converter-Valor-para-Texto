@@ -2,7 +2,7 @@
 
 namespace MoneyConvert\Convert;
 
-use MoneyConvert\Core\AbstractBaseConvert;
+use MoneyConvert\Core\CoreController;
 
 /**
  * Realiza a conversão de números em formato de moeda brasileira ex: "R$ 20,98",
@@ -31,7 +31,7 @@ use MoneyConvert\Core\AbstractBaseConvert;
  * @version         
  * 
  */
-class MoneyToWords extends AbstractBaseConvert
+class MoneyToWords extends CoreController
 {
 	/**
 	 * @param string $lang
