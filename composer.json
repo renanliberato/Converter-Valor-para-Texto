@@ -1,5 +1,9 @@
 {
     "autoload": {
         "psr-4": {"MoneyConvert\\": "src/MoneyConvert/"}
+    },
+    "require": {
+        "zendframework/zend-inputfilter": "^2.7",
+        "zendframework/zend-escaper": "^2.5"
     }
 }
